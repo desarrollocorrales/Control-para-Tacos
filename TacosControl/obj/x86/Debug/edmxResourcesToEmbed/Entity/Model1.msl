@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tacos_controlModelStoreContainer" CdmEntityContainer="tacos_controlEntities">
+    <EntitySetMapping Name="insumos">
+      <EntityTypeMapping TypeName="tacos_controlModel.insumos">
+        <MappingFragment StoreEntitySet="insumos">
+          <ScalarProperty Name="id_insumo" ColumnName="id_insumo" />
+          <ScalarProperty Name="insumo" ColumnName="insumo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="productos">
+      <EntityTypeMapping TypeName="tacos_controlModel.productos">
+        <MappingFragment StoreEntitySet="productos">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="producto" ColumnName="producto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="recetas">
+      <EntityTypeMapping TypeName="tacos_controlModel.recetas">
+        <MappingFragment StoreEntitySet="recetas">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="id_insumo" ColumnName="id_insumo" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="unidad" ColumnName="unidad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ventas">
+      <EntityTypeMapping TypeName="tacos_controlModel.ventas">
+        <MappingFragment StoreEntitySet="ventas">
+          <ScalarProperty Name="id_producto" ColumnName="id_producto" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

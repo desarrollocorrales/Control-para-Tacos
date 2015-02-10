@@ -1,0 +1,54 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TacosControl.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MysqlServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">servidor</Value>
+    </Setting>
+    <Setting Name="MysqlUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">usuario</Value>
+    </Setting>
+    <Setting Name="MysqlPass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">contraseña</Value>
+    </Setting>
+    <Setting Name="MysqlPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">3306</Value>
+    </Setting>
+    <Setting Name="MysqlDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">base de datos</Value>
+    </Setting>
+    <Setting Name="MSSQLServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">servidor</Value>
+    </Setting>
+    <Setting Name="MSSQLUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">usuario</Value>
+    </Setting>
+    <Setting Name="MSSQLPass" Type="System.String" Scope="User">
+      <Value Profile="(Default)">contraseña</Value>
+    </Setting>
+    <Setting Name="MSSQLPort" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1433</Value>
+    </Setting>
+    <Setting Name="MSSQLDatabase" Type="System.String" Scope="User">
+      <Value Profile="(Default)">base de datos</Value>
+    </Setting>
+    <Setting Name="MailSender" Type="System.String" Scope="User">
+      <Value Profile="(Default)">automata@loscorrales.com.mx</Value>
+    </Setting>
+    <Setting Name="MailServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">mail.loscorrales.com.mx</Value>
+    </Setting>
+    <Setting Name="MailPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2525</Value>
+    </Setting>
+    <Setting Name="MailPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">pass</Value>
+    </Setting>
+    <Setting Name="ListaDeCorreos" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Sucursal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Tacos</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

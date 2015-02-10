@@ -1,0 +1,14 @@
+D:\Github\Tacos Control\TacosControl\bin\Debug\TacosControl.exe
+D:\Github\Tacos Control\TacosControl\bin\Debug\TacosControl.pdb
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.Properties.Resources.resources
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.csproj.GenerateResource.Cache
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.exe
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.pdb
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.GUIs.Frm_Principal.resources
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.exe.licenses
+D:\Github\Tacos Control\TacosControl\bin\Debug\TacosControl.exe.config
+D:\Github\Tacos Control\TacosControl\bin\Debug\EntityFramework.dll
+D:\Github\Tacos Control\TacosControl\bin\Debug\MySql.Data.Entity.EF6.dll
+D:\Github\Tacos Control\TacosControl\bin\Debug\EntityFramework.xml
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.csprojResolveAssemblyReference.cache
+D:\Github\Tacos Control\TacosControl\obj\x86\Debug\TacosControl.GUIs.Frm_Login.resources

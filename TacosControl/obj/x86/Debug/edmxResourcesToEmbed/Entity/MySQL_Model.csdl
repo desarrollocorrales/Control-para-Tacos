@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TacosControlModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="TacoControl_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="insumos" EntityType="TacosControlModel.insumos" />
+    <EntitySet Name="productos" EntityType="TacosControlModel.productos" />
+    <EntitySet Name="recetas" EntityType="TacosControlModel.recetas" />
+    <EntitySet Name="ventas" EntityType="TacosControlModel.ventas" />
+    <AssociationSet Name="FK_insum" Association="TacosControlModel.FK_insum">
+      <End Role="insumos" EntitySet="insumos" />
+      <End Role="recetas" EntitySet="recetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_prod" Association="TacosControlModel.FK_prod">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="recetas" EntitySet="recetas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_productos" Association="TacosControlModel.FK_productos">
+      <End Role="productos" EntitySet="productos" />
+      <End Role="ventas" EntitySet="ventas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="insumos">
+    <Key>
+      <PropertyRef Name="id_insumo" />
+    </Key>
+    <Property Name="id_insumo" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="insumo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="recetas" Relationship="TacosControlModel.FK_insum" FromRole="insumos" ToRole="recetas" />
+  </EntityType>
+  <EntityType Name="productos">
+    <Key>
+      <PropertyRef Name="id_producto" />
+    </Key>
+    <Property Name="id_producto" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="producto" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="recetas" Relationship="TacosControlModel.FK_prod" FromRole="productos" ToRole="recetas" />
+    <NavigationProperty Name="ventas" Relationship="TacosControlModel.FK_productos" FromRole="productos" ToRole="ventas" />
+  </EntityType>
+  <EntityType Name="recetas">
+    <Key>
+      <PropertyRef Name="id_producto" />
+      <PropertyRef Name="id_insumo" />
+      <PropertyRef Name="cantidad" />
+      <PropertyRef Name="unidad" />
+    </Key>
+    <Property Name="id_producto" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="id_insumo" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="cantidad" Type="Decimal" Nullable="false" />
+    <Property Name="unidad" Type="String" Nullable="false" MaxLength="3" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="insumos" Relationship="TacosControlModel.FK_insum" FromRole="recetas" ToRole="insumos" />
+    <NavigationProperty Name="productos" Relationship="TacosControlModel.FK_prod" FromRole="recetas" ToRole="productos" />
+  </EntityType>
+  <EntityType Name="ventas">
+    <Key>
+      <PropertyRef Name="id_producto" />
+      <PropertyRef Name="cantidad" />
+      <PropertyRef Name="fecha" />
+    </Key>
+    <Property Name="id_producto" Type="String" Nullable="false" MaxLength="15" Unicode="false" FixedLength="false" />
+    <Property Name="cantidad" Type="Int32" Nullable="false" />
+    <Property Name="fecha" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="productos" Relationship="TacosControlModel.FK_productos" FromRole="ventas" ToRole="productos" />
+  </EntityType>
+  <Association Name="FK_insum">
+    <End Role="insumos" Type="TacosControlModel.insumos" Multiplicity="1" />
+    <End Role="recetas" Type="TacosControlModel.recetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="insumos">
+        <PropertyRef Name="id_insumo" />
+      </Principal>
+      <Dependent Role="recetas">
+        <PropertyRef Name="id_insumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_prod">
+    <End Role="productos" Type="TacosControlModel.productos" Multiplicity="1" />
+    <End Role="recetas" Type="TacosControlModel.recetas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="recetas">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_productos">
+    <End Role="productos" Type="TacosControlModel.productos" Multiplicity="1" />
+    <End Role="ventas" Type="TacosControlModel.ventas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="productos">
+        <PropertyRef Name="id_producto" />
+      </Principal>
+      <Dependent Role="ventas">
+        <PropertyRef Name="id_producto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
