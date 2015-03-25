@@ -19,9 +19,9 @@ using System.Xml.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region Metadatos de relaciones en EDM
 
-[assembly: EdmRelationshipAttribute("Tacos_Control_Model", "FK_productos", "productos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TacosControl.Entity.productos), "ventas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TacosControl.Entity.ventas), true)]
 [assembly: EdmRelationshipAttribute("Tacos_Control_Model", "FK_insum", "insumos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TacosControl.Entity.insumos), "recetas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TacosControl.Entity.recetas), true)]
 [assembly: EdmRelationshipAttribute("Tacos_Control_Model", "FK_prod", "productos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TacosControl.Entity.productos), "recetas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TacosControl.Entity.recetas), true)]
+[assembly: EdmRelationshipAttribute("Tacos_Control_Model", "FK_productos", "productos", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(TacosControl.Entity.productos), "ventas", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(TacosControl.Entity.ventas), true)]
 
 #endregion
 
@@ -108,22 +108,6 @@ namespace TacosControl.Entity
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<ventas> ventas
-        {
-            get
-            {
-                if ((_ventas == null))
-                {
-                    _ventas = base.CreateObjectSet<ventas>("ventas");
-                }
-                return _ventas;
-            }
-        }
-        private ObjectSet<ventas> _ventas;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<recetas> recetas
         {
             get
@@ -136,6 +120,22 @@ namespace TacosControl.Entity
             }
         }
         private ObjectSet<recetas> _recetas;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<ventas> ventas
+        {
+            get
+            {
+                if ((_ventas == null))
+                {
+                    _ventas = base.CreateObjectSet<ventas>("ventas");
+                }
+                return _ventas;
+            }
+        }
+        private ObjectSet<ventas> _ventas;
 
         #endregion
 
@@ -158,19 +158,19 @@ namespace TacosControl.Entity
         }
     
         /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet ventas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToventas(ventas ventas)
-        {
-            base.AddObject("ventas", ventas);
-        }
-    
-        /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet recetas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
         /// </summary>
         public void AddTorecetas(recetas recetas)
         {
             base.AddObject("recetas", recetas);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet ventas. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToventas(ventas ventas)
+        {
+            base.AddObject("ventas", ventas);
         }
 
         #endregion
@@ -195,13 +195,13 @@ namespace TacosControl.Entity
         /// Crear un nuevo objeto insumos.
         /// </summary>
         /// <param name="id_insumo">Valor inicial de la propiedad id_insumo.</param>
-        /// <param name="insumo">Valor inicial de la propiedad insumo.</param>
+        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
         /// <param name="unidad">Valor inicial de la propiedad unidad.</param>
-        public static insumos Createinsumos(global::System.String id_insumo, global::System.String insumo, global::System.String unidad)
+        public static insumos Createinsumos(global::System.String id_insumo, global::System.String descripcion, global::System.String unidad)
         {
             insumos insumos = new insumos();
             insumos.id_insumo = id_insumo;
-            insumos.insumo = insumo;
+            insumos.descripcion = descripcion;
             insumos.unidad = unidad;
             return insumos;
         }
@@ -242,24 +242,24 @@ namespace TacosControl.Entity
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String insumo
+        public global::System.String descripcion
         {
             get
             {
-                return _insumo;
+                return _descripcion;
             }
             set
             {
-                OninsumoChanging(value);
-                ReportPropertyChanging("insumo");
-                _insumo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("insumo");
-                OninsumoChanged();
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
             }
         }
-        private global::System.String _insumo;
-        partial void OninsumoChanging(global::System.String value);
-        partial void OninsumoChanged();
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.
@@ -284,6 +284,30 @@ namespace TacosControl.Entity
         private global::System.String _unidad;
         partial void OnunidadChanging(global::System.String value);
         partial void OnunidadChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> rendimiento
+        {
+            get
+            {
+                return _rendimiento;
+            }
+            set
+            {
+                OnrendimientoChanging(value);
+                ReportPropertyChanging("rendimiento");
+                _rendimiento = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("rendimiento");
+                OnrendimientoChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _rendimiento;
+        partial void OnrendimientoChanging(Nullable<global::System.Decimal> value);
+        partial void OnrendimientoChanged();
 
         #endregion
 
@@ -405,28 +429,6 @@ namespace TacosControl.Entity
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("Tacos_Control_Model", "FK_productos", "ventas")]
-        public EntityCollection<ventas> ventas
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ventas>("Tacos_Control_Model.FK_productos", "ventas");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ventas>("Tacos_Control_Model.FK_productos", "ventas", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("Tacos_Control_Model", "FK_prod", "recetas")]
         public EntityCollection<recetas> recetas
         {
@@ -439,6 +441,28 @@ namespace TacosControl.Entity
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<recetas>("Tacos_Control_Model.FK_prod", "recetas", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("Tacos_Control_Model", "FK_productos", "ventas")]
+        public EntityCollection<ventas> ventas
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<ventas>("Tacos_Control_Model.FK_productos", "ventas");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<ventas>("Tacos_Control_Model.FK_productos", "ventas", value);
                 }
             }
         }

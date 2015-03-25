@@ -181,18 +181,6 @@ namespace TacosControl.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("pass")]
-        public string MailPassword {
-            get {
-                return ((string)(this["MailPassword"]));
-            }
-            set {
-                this["MailPassword"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public global::System.Collections.Specialized.StringCollection ListaDeCorreos {
             get {
                 return ((global::System.Collections.Specialized.StringCollection)(this["ListaDeCorreos"]));
@@ -211,6 +199,18 @@ namespace TacosControl.Properties {
             }
             set {
                 this["Sucursal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("corrales.2013")]
+        public string MailPassword {
+            get {
+                return ((string)(this["MailPassword"]));
+            }
+            set {
+                this["MailPassword"] = value;
             }
         }
     }

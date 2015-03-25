@@ -74,7 +74,10 @@ namespace TacosControl.MSSQLDAL
             Conexion.Open();
             
             Comando.CommandText =
-                string.Format(@"SELECT DISTINCT idinsumo, descripcion, unidad FROM insumos");
+                string.Format(@"SELECT i.idinsumo, i.descripcion, i.unidad,
+                                       (SELECT TOP 1 rendimiento FROM insumospresentaciones WHERE idinsumo=i.idinsumo) rendimiento
+                                  FROM
+                                       insumos i");
 
             Adapter.SelectCommand = Comando;
             DataTable TablaResultados = new DataTable();
@@ -86,6 +89,8 @@ namespace TacosControl.MSSQLDAL
                 insumo = new MSInsumos();
                 insumo.idInsumo = Convert.ToString(fila["idinsumo"]);
                 insumo.Descripcion = Convert.ToString(fila["descripcion"]);
+                if (fila["rendimiento"] != DBNull.Value)
+                    insumo.Rendimiento = Convert.ToDecimal(fila["rendimiento"]);
                 insumo.Unidad = Convert.ToString(fila["unidad"]);
 
                 lstInsumos.Add(insumo);
@@ -163,7 +168,9 @@ namespace TacosControl.MSSQLDAL
             List<MSVentas> lstVentas = new List<MSVentas>();
 
             Conexion.Open();
-
+            Comando.CommandText = "SET DATEFORMAT ymd;";
+            Comando.ExecuteNonQuery();
+            
             Comando.CommandText =
                 string.Format(@"SELECT 
                                   idproducto, cantidad, fecha

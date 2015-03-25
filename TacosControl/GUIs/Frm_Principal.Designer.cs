@@ -51,7 +51,9 @@
             this.insumosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gvInsumos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colid_insumo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colinsumo1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.coldescripcion = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colrendimiento = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colunidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridProductos = new DevExpress.XtraGrid.GridControl();
             this.gvProductos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colid_producto = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -412,7 +414,7 @@
             // colinsumos
             // 
             this.colinsumos.Caption = "Insumo";
-            this.colinsumos.FieldName = "insumos.insumo";
+            this.colinsumos.FieldName = "insumos.descripcion";
             this.colinsumos.Name = "colinsumos";
             this.colinsumos.Visible = true;
             this.colinsumos.VisibleIndex = 0;
@@ -563,7 +565,9 @@
             this.gvInsumos.Appearance.VertLine.Options.UseBackColor = true;
             this.gvInsumos.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colid_insumo,
-            this.colinsumo1});
+            this.coldescripcion,
+            this.colrendimiento,
+            this.colunidad});
             this.gvInsumos.GridControl = this.gridInsumos;
             this.gvInsumos.Name = "gvInsumos";
             this.gvInsumos.OptionsBehavior.Editable = false;
@@ -574,17 +578,35 @@
             // 
             // colid_insumo
             // 
+            this.colid_insumo.Caption = "ID";
             this.colid_insumo.FieldName = "id_insumo";
             this.colid_insumo.Name = "colid_insumo";
             this.colid_insumo.Visible = true;
             this.colid_insumo.VisibleIndex = 0;
             // 
-            // colinsumo1
+            // coldescripcion
             // 
-            this.colinsumo1.FieldName = "insumo";
-            this.colinsumo1.Name = "colinsumo1";
-            this.colinsumo1.Visible = true;
-            this.colinsumo1.VisibleIndex = 1;
+            this.coldescripcion.Caption = "Descripcion";
+            this.coldescripcion.FieldName = "descripcion";
+            this.coldescripcion.Name = "coldescripcion";
+            this.coldescripcion.Visible = true;
+            this.coldescripcion.VisibleIndex = 1;
+            // 
+            // colrendimiento
+            // 
+            this.colrendimiento.Caption = "Rendimiento";
+            this.colrendimiento.FieldName = "rendimiento";
+            this.colrendimiento.Name = "colrendimiento";
+            this.colrendimiento.Visible = true;
+            this.colrendimiento.VisibleIndex = 2;
+            // 
+            // colunidad
+            // 
+            this.colunidad.Caption = "Unidad";
+            this.colunidad.FieldName = "unidad";
+            this.colunidad.Name = "colunidad";
+            this.colunidad.Visible = true;
+            this.colunidad.VisibleIndex = 3;
             // 
             // gridProductos
             // 
@@ -1425,8 +1447,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colid_producto;
         private DevExpress.XtraGrid.Columns.GridColumn colproducto;
         private System.Windows.Forms.BindingSource insumosBindingSource;
-        private DevExpress.XtraGrid.Columns.GridColumn colid_insumo;
-        private DevExpress.XtraGrid.Columns.GridColumn colinsumo1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblAccion;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1475,5 +1495,9 @@
         private System.Windows.Forms.TextBox txbListCorreos;
         private System.Windows.Forms.Timer timEjecutar;
         private System.ComponentModel.BackgroundWorker bgwTemporizador;
+        private DevExpress.XtraGrid.Columns.GridColumn colid_insumo;
+        private DevExpress.XtraGrid.Columns.GridColumn coldescripcion;
+        private DevExpress.XtraGrid.Columns.GridColumn colrendimiento;
+        private DevExpress.XtraGrid.Columns.GridColumn colunidad;
     }
 }

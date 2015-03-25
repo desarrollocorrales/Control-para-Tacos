@@ -488,7 +488,8 @@ namespace TacosControl.GUIs
             {
                 myInsumo = new insumos();
                 myInsumo.id_insumo = insumo.idInsumo;
-                myInsumo.insumo = insumo.Descripcion;
+                myInsumo.descripcion = insumo.Descripcion;
+                myInsumo.rendimiento = insumo.Rendimiento;
                 myInsumo.unidad = insumo.Unidad;
 
                 Contexto.insumos.AddObject(myInsumo);
@@ -496,11 +497,10 @@ namespace TacosControl.GUIs
                 barProgreso.Value = ContarInsumos;
 
                 lblAccionExportar.Paste("    Exportando Insumo ID: " + myInsumo.id_insumo);
-                lblAccionExportar.Paste(" Descripcion: " + myInsumo.insumo);
+                lblAccionExportar.Paste(" Descripcion: " + myInsumo.descripcion);
                 lblAccionExportar.Paste(" Unidad: " + myInsumo.unidad);
                 lblAccionExportar.Paste(Environment.NewLine);
                 Application.DoEvents();
-
             }
 
             Contexto.SaveChanges();
@@ -671,13 +671,13 @@ namespace TacosControl.GUIs
         private void ExportarVentasBGW(DateTime fecha)
         {
             MSSQL_DAL DAL = new MSSQL_DAL();
-            List<MSVentas> lstVentas = DAL.obtenerVentasDelDia(dtpFecha.Value);
+            List<MSVentas> lstVentas = DAL.obtenerVentasDelDia(fecha);
 
             Mysql_DAL myDal = new Mysql_DAL();
             Tacos_Control_Entities Tacontexto = new Tacos_Control_Entities(myDal.obtenerStringDeConexion());
 
             // *** Borrar las ventas del dia ***
-            BorrarVentasMySQL(dtpFecha.Value, Tacontexto);
+            BorrarVentasMySQL(fecha, Tacontexto);
 
             string consulta;
             foreach (MSVentas venta in lstVentas)
@@ -689,6 +689,12 @@ namespace TacosControl.GUIs
 
                 Tacontexto.ExecuteStoreCommand(consulta);
             }
+
+            //Enviar Email
+            EnviarEmail(fecha);
+
+            //Desactivar el sentinela
+            SentinelaEjecutar = false;
         }
 
         private void BorrarVentasMySQL(DateTime fecha, Tacos_Control_Entities Tacontexto)
@@ -798,29 +804,32 @@ namespace TacosControl.GUIs
                 int HoraTermino = Convert.ToInt32(ConfigurationManager.AppSettings["HoraTermino"]);
 
                 DateTime Fecha = new DateTime();
+                
                 TimeSpan HoraEjecucionInicio = new TimeSpan(HoraInicio, 0, 0);
                 TimeSpan HoraEjecucionFin = new TimeSpan(HoraTermino, 0, 0);
 
                 TimeSpan tiempo = ObtenerHoraServer(ref Fecha);
+                DateTime FechaReporte = Fecha.AddDays(-1);
 
-                if (tiempo > HoraEjecucionInicio && tiempo < HoraEjecucionFin)
+                try
                 {
-                    //Es hora de ejecutar la exportación
-                    if (SentinelaEjecutar == true)
+                    if (tiempo > HoraEjecucionInicio && tiempo < HoraEjecucionFin)
                     {
-                        //Exportar ventas del dia anterior
-                        ExportarVentasBGW(Fecha.AddDays(-1));
-
-                        //Enviar Email
-                        EnviarEmail(Fecha.AddDays(-1));
-
-                        //Desactivar el sentinela
-                        SentinelaEjecutar = false;
-                    }                    
+                        //Es hora de ejecutar la exportación
+                        if (SentinelaEjecutar == true)
+                        {
+                            //Exportar ventas del dia anterior
+                            ExportarVentasBGW(FechaReporte);
+                        }
+                    }
+                    else
+                    {
+                        //Activar el sentinela
+                        SentinelaEjecutar = true;
+                    }
                 }
-                else
+                catch 
                 {
-                    //Activar el sentinela
                     SentinelaEjecutar = true;
                 }
 

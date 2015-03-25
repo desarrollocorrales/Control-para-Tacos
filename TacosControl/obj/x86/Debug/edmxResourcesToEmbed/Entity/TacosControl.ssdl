@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="Tacos_Control_Model.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
   <EntityContainer Name="Tacos_Control_ModelStoreContainer">
-    <EntitySet Name="insumos" EntityType="Tacos_Control_Model.Store.insumos" store:Type="Tables" Schema="tacos_control" />
-    <EntitySet Name="productos" EntityType="Tacos_Control_Model.Store.productos" store:Type="Tables" Schema="tacos_control" />
-    <EntitySet Name="recetas" EntityType="Tacos_Control_Model.Store.recetas" store:Type="Tables" store:Schema="tacos_control" store:Name="recetas">
+    <EntitySet Name="insumos" EntityType="Tacos_Control_Model.Store.insumos" store:Type="Tables" Schema="corrales_controltacos_dolores" />
+    <EntitySet Name="productos" EntityType="Tacos_Control_Model.Store.productos" store:Type="Tables" Schema="corrales_controltacos_dolores" />
+    <EntitySet Name="recetas" EntityType="Tacos_Control_Model.Store.recetas" store:Type="Tables" store:Schema="corrales_controltacos_dolores" store:Name="recetas">
       <DefiningQuery>SELECT
       `recetas`.`id_producto`, 
       `recetas`.`id_insumo`, 
       `recetas`.`cantidad`
       FROM `recetas` AS `recetas`</DefiningQuery>
     </EntitySet>
-    <EntitySet Name="ventas" EntityType="Tacos_Control_Model.Store.ventas" store:Type="Tables" store:Schema="tacos_control" store:Name="ventas">
+    <EntitySet Name="ventas" EntityType="Tacos_Control_Model.Store.ventas" store:Type="Tables" store:Schema="corrales_controltacos_dolores" store:Name="ventas">
       <DefiningQuery>SELECT
       `ventas`.`id_producto`, 
       `ventas`.`cantidad`, 
@@ -35,8 +35,9 @@
       <PropertyRef Name="id_insumo" />
     </Key>
     <Property Name="id_insumo" Type="varchar" Nullable="false" MaxLength="15" />
-    <Property Name="insumo" Type="varchar" Nullable="false" MaxLength="50" />
-    <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="60" />
+    <Property Name="unidad" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="rendimiento" Type="decimal" Precision="7" Scale="3" />
   </EntityType>
   <EntityType Name="productos">
     <Key>
@@ -46,7 +47,7 @@
     <Property Name="producto" Type="varchar" Nullable="false" MaxLength="50" />
   </EntityType>
   <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'tacos_control.recetas' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      advertencia 6002: La tabla o vista 'corrales_controltacos_dolores.recetas' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
       -->
   <EntityType Name="recetas">
     <Key>
@@ -59,7 +60,7 @@
     <Property Name="cantidad" Type="decimal" Nullable="false" Precision="7" Scale="3" />
   </EntityType>
   <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'tacos_control.ventas' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      advertencia 6002: La tabla o vista 'corrales_controltacos_dolores.ventas' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
       -->
   <EntityType Name="ventas">
     <Key>

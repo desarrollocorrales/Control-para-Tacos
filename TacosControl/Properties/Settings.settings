@@ -41,14 +41,14 @@
     <Setting Name="MailPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">2525</Value>
     </Setting>
-    <Setting Name="MailPassword" Type="System.String" Scope="User">
-      <Value Profile="(Default)">pass</Value>
-    </Setting>
     <Setting Name="ListaDeCorreos" Type="System.Collections.Specialized.StringCollection" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Sucursal" Type="System.String" Scope="User">
       <Value Profile="(Default)">Tacos</Value>
+    </Setting>
+    <Setting Name="MailPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">corrales.2013</Value>
     </Setting>
   </Settings>
 </SettingsFile>

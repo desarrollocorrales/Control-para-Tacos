@@ -6,5 +6,6 @@ namespace TacosControl.Modelos
         public string idInsumo { get; set; }
         public string Descripcion { get; set; }
         public string Unidad { get; set; }
+        public decimal? Rendimiento { get; set; }
     }
 }
